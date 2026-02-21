@@ -18,26 +18,35 @@ public class NumberGame {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to Number Guessing Game. ");
-        System.out.println("Enter a number from 1 to 100 :");
         Random random = new Random();
-        int RandomNumber = random.nextInt(100) + 1;
-        int count = 0;
-        for (int i = 1; i <= 100; i++) {
-            int input = sc.nextInt();
-            if (input == RandomNumber) {
-                System.out.println("Correct! You guessed the number.");
-                System.out.println("You guess the number in " + (count + 1) + " attempts.");
-                System.out.println("Game Over!");
-                break;
+        boolean playAgain = true;
+        while (playAgain) {
+            System.out.println("Enter a number from 1 to 100 :");
+            int randomNumber = random.nextInt(100) + 1;
+            int count = 0;
+            boolean guess = false;
+            while (!guess) {
+                int input = sc.nextInt();
+                count++;
+                if (input == randomNumber) {
+                    System.out.println("Correct! You guessed the number.");
+                    System.out.println("You guess the number in " + count + " attempts.");
+                    System.out.println("Game Over!");
+                    guess = true;
+                } else if (input > randomNumber) {
+                    System.out.println("Guess is high.");
+                } else {
+                    System.out.println("Guess is low.");
+                }
             }
-            if (input > RandomNumber) {
-                System.out.println("Guess is high.");
-                count++;
-            } else {
-                System.out.println("Guess is low.");
-                count++;
+            System.out.println("Do you want to play again? (yes/no): ");
+            String response = sc.next();
+            if (!response.equalsIgnoreCase("yes")) {
+                playAgain = false;
             }
         }
+        System.out.println("Thank you for playing My Game.");
+        sc.close();
     }
 }
 
