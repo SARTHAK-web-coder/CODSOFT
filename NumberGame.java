@@ -11,26 +11,33 @@
 // 6. Add the option for multiple rounds, allowing the user to play again.
 // 7. Display the user's score, which can be based on the number of attempts taken or rounds won.
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class NumberGame {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int RandomNumber = 33;
-        for (int i = 0; i < 100; i++) {
+        System.out.println("Welcome to Number Guessing Game. ");
+        System.out.println("Enter a number from 1 to 100 :");
+        Random random = new Random();
+        int RandomNumber = random.nextInt(100) + 1;
+        int count = 0;
+        for (int i = 1; i <= 100; i++) {
             int input = sc.nextInt();
             if (input == RandomNumber) {
-                System.out.println("Guess is correct.");
+                System.out.println("Correct! You guessed the number.");
+                System.out.println("You guess the number in " + (count + 1) + " attempts.");
+                System.out.println("Game Over!");
                 break;
             }
             if (input > RandomNumber) {
-                System.out.println("Guess is high");
-                continue;
+                System.out.println("Guess is high.");
+                count++;
             } else {
-                System.out.println("Guess is low");
-                continue;
+                System.out.println("Guess is low.");
+                count++;
             }
         }
-
     }
 }
+
