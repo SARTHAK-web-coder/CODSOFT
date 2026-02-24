@@ -1,2 +1,2 @@
 # CODSOFT
-First Internship at Codsoft
+Internship at Codsoft
